@@ -11,7 +11,6 @@ class ForgetPassScreenBody extends StatefulWidget {
   @override
   State<ForgetPassScreenBody> createState() => _ForgetPassScreenBodyState();
 }
-
 final List<String> errors = [];
 late String email;
 final _formKey = GlobalKey<FormState>();
