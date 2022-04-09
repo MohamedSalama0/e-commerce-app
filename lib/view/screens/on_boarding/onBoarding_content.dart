@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/common/size_config.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../common/app_style.dart';
@@ -38,7 +39,8 @@ class OnBoarding {
       ),
       image: Image.asset(
         'assets/images/onboarding_image_1.png',
-        scale: 0.7,
+        scale: 1.3,
+        width: getResponsiveScreenWidth(85),
       ),
     ),
     OnBoarding(
@@ -46,7 +48,7 @@ class OnBoarding {
         style: kBodyText1,
         textAlign: TextAlign.center,
       ),
-      image: Image.asset('assets/images/onboarding_image_2.png'),
+      image: Image.asset('assets/images/onboarding_image_2.png',scale: 0.5),
     ),
     OnBoarding(
       title: const Text('We Show the easy way to Shop',

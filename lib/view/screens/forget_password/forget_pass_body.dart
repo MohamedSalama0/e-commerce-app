@@ -51,13 +51,12 @@ class _ForgetPassScreenBodyState extends State<ForgetPassScreenBody> {
                 onPressed: ()
                 {
                   if(_formKey.currentState!.validate()){
-
                   }
                 },
                 text: 'Continue',
               ),
               buildHeightSpace(30),
-              noAccountText(),
+              noAccountText(context),
             ],
           ),
         ),

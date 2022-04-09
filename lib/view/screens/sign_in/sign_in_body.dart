@@ -75,7 +75,7 @@ class _BodyState extends State<SignInBody> {
                   )
                 ],
               ),
-              buildHeightSpace(7),
+              buildHeightSpace(8),
               FormError(errors: errors),
               defaultButton(
                 context: context,
@@ -86,7 +86,7 @@ class _BodyState extends State<SignInBody> {
                 },
                 text: 'Continue',
               ),
-              buildHeightSpace(20),
+              buildHeightSpace(21),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -105,8 +105,8 @@ class _BodyState extends State<SignInBody> {
                   ),
                 ],
               ),
-              buildHeightSpace(9),
-              noAccountText(),
+              buildHeightSpace(10),
+              noAccountText(context),
               buildHeightSpace(3),
             ],
           ),
