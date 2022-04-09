@@ -1,13 +1,14 @@
-import 'package:e_commerce_app/common/size_config.dart';
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: file_names
 
+import 'package:e_commerce_app/common/size_config.dart';
+import 'package:flutter/material.dart';
 import '../../../common/app_style.dart';
 
 class OnBoarding {
-  Widget title ;
+  final Widget title;
   final Widget image;
 
-  OnBoarding({ required this.title,required this.image});
+  OnBoarding({required this.title, required this.image});
 
   static List<OnBoarding> onBoardingContent = [
     OnBoarding(
@@ -32,8 +33,7 @@ class OnBoarding {
                       blurRadius: 28,
                     ),
                   ],
-                )
-            ),
+                )),
           ],
         ),
       ),
@@ -44,23 +44,20 @@ class OnBoarding {
       ),
     ),
     OnBoarding(
-      title: const Text('We Help People connect to store\nfast and easy',
+      title: const Text(
+        'We Help People connect to store\nfast and easy',
         style: kBodyText1,
         textAlign: TextAlign.center,
       ),
-      image: Image.asset('assets/images/onboarding_image_2.png',scale: 0.5),
+      image: Image.asset('assets/images/onboarding_image_2.png', scale: 0.5),
     ),
     OnBoarding(
-      title: const Text('We Show the easy way to Shop',
-      style: kBodyText1,
+      title: const Text(
+        'We Show the easy way to Shop',
+        style: kBodyText1,
       ),
       image: Image.asset('assets/images/onboarding_image_3.png'),
     ),
-    OnBoarding(
-      title: const Text('join our suportive community',
-        style: kBodyText1,
-      ),
-      image: Image.asset('assets/images/onboarding_image_4.png'),
-    ),
+ 
   ];
 }

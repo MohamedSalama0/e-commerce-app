@@ -1,8 +1,6 @@
 import 'package:e_commerce_app/common/size_config.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'dart:ui';
 import 'app_style.dart';
 
 AnimatedContainer? dotIndicator(index, int currentPage) {
@@ -10,7 +8,7 @@ AnimatedContainer? dotIndicator(index, int currentPage) {
     margin: const EdgeInsets.only(left: 5),
     duration: const Duration(milliseconds: 400),
     height: 10.0,
-    width: currentPage == index ? 23.0 : 10,
+    width: currentPage == index ? 25.0 : 10,
     decoration: BoxDecoration(
         color: currentPage == index ? kPrimaryColor : kGrey,
         borderRadius: BorderRadius.circular(6)
@@ -19,13 +17,10 @@ AnimatedContainer? dotIndicator(index, int currentPage) {
   );
 }
 
-Widget defaultButton(
-    {required BuildContext context,
-    required VoidCallback onPressed,
-    required String text}) {
+Widget defaultButton({required VoidCallback onPressed, required String text}) {
   return SizedBox(
-    width: getResponsiveScreenWidth(200),
-    height: getResponsiveScreenHeight(8),
+    width: getResponsiveScreenWidth(75),
+    height: getResponsiveScreenHeight(8.0),
     child: Container(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
@@ -63,11 +58,11 @@ Widget socialCard({required String icon, required VoidCallback press}) {
   return GestureDetector(
     onTap: press,
     child: Container(
-      margin: const EdgeInsets.symmetric(horizontal: 12),
+      margin: const EdgeInsets.symmetric(horizontal: 14),
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      padding: const EdgeInsets.all(11.5),
-      width: getResponsiveScreenWidth(12.4),
-      height: getResponsiveScreenHeight(6),
+      padding: const EdgeInsets.all(10.0),
+      width: getResponsiveScreenWidth(11.3),
+      height: getResponsiveScreenHeight(5.8),
       decoration: BoxDecoration(
         boxShadow: const [
           BoxShadow(
@@ -78,57 +73,95 @@ Widget socialCard({required String icon, required VoidCallback press}) {
               offset: Offset(7.0, 11.3))
         ],
         color: Colors.white70,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(15),
       ),
       child: SvgPicture.asset(icon),
     ),
   );
 }
 
-Widget noAccountText() {
-  return RichText(
-    text: TextSpan(
-      style: TextStyle(color: kTextColor, fontSize: getResponsiveScreenWidth(5)),
-      children: const [
-        TextSpan(text: 'Dont have account? '),
-        TextSpan(
-          text: 'Sign Up',
-          style: TextStyle(
-            color: Colors.blue,
-            fontWeight: FontWeight.w500,
-          ),
+Widget noAccountText(context) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Text(
+        'Dont have account?',
+        style: TextStyle(
+          color: kTextColor,
+          fontSize: getResponsiveScreenWidth(4.0),
         ),
-      ],
-    ),
+      ),
+      TextButton(
+        child: Text(
+          'Sign Up',
+          style: TextStyle(
+              fontSize: getResponsiveScreenWidth(4.0), color: Colors.indigo),
+        ),
+        onPressed: () {
+          Navigator.pushNamed(context, 'SignUpScreen');
+        },
+      ),
+    ],
   );
 }
 
-Widget customSuffixIcon(String svgIcon) {
+Widget socialMediaSection() {
+  return Column(
+    children: [
+      Row(
+        children: 
+        [
+          buildDivider(), 
+          const Text('Or',style: TextStyle(color: kPrimaryColor,)),
+          buildDivider(), 
+        ],
+      ),
+      buildHeightSpace(4),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          socialCard(
+            icon: 'assets/images/google-logo-search-new-svgrepo-com.svg',
+            press: () {},
+          ),
+          socialCard(
+            icon: 'assets/images/facebook-svgrepo-com.svg',
+            press: () {},
+          ),
+          socialCard(
+            icon: 'assets/images/twitter-social-media-svgrepo-com.svg',
+            press: () {},
+          ),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget buildDivider() {
+  return Expanded(
+    child: Divider(
+      thickness: 1.5,
+        indent: getResponsiveScreenWidth(5),
+        endIndent: getResponsiveScreenWidth(5),
+        height: 1.5,
+        color: Colors.grey,
+      ),
+  );
+}
+
+Widget customSuffixIcon({String? svgIcon, double inputScale = 15}) {
   var fsizeW = SizeConfig.screenWidth;
   return Padding(
     padding: EdgeInsets.fromLTRB(0, fsizeW! / 30, fsizeW / 23, fsizeW / 30),
     child: SvgPicture.asset(
-      svgIcon,
-      height: fsizeW / 12.9,
+      svgIcon!,
+      height: fsizeW / inputScale,
     ),
   );
 }
 
-InputDecorationTheme inputDecorationTheme() {
-  OutlineInputBorder outlineInputBorder = OutlineInputBorder(
-    borderSide: const BorderSide(color: kTextColor),
-    borderRadius: BorderRadius.circular(25),
-    gapPadding: 15,
-  );
-  return InputDecorationTheme(
-    hintStyle: const TextStyle(color: Colors.grey),
-    contentPadding: const EdgeInsets.symmetric(horizontal: 47, vertical: 20),
-    floatingLabelBehavior: FloatingLabelBehavior.always,
-    enabledBorder: outlineInputBorder,
-    focusedBorder: outlineInputBorder,
-    border: outlineInputBorder,
-  );
-}
+
 
 Widget onBordNavBtn({required String name, required VoidCallback onPressed}) {
   var sizeW = SizeConfig.screenWidth;
@@ -139,7 +172,7 @@ Widget onBordNavBtn({required String name, required VoidCallback onPressed}) {
       borderRadius: BorderRadius.circular(16),
       color: Colors.cyan,
     ),
-    height: sizeH! / 22,
+    height: sizeH! / 22.0,
     width: sizeW! / 4.7,
     child: ElevatedButton(
       style: ElevatedButton.styleFrom(

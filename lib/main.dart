@@ -1,14 +1,11 @@
-import 'package:e_commerce_app/common/widgets.dart';
-import 'package:e_commerce_app/view/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-
 import 'app_router.dart';
 import 'common/app_style.dart';
-
 void main() {
   runApp(MyApp(appRouter: AppRouter()));
 }
 
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   MyApp({
     Key? key,

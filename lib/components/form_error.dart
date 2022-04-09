@@ -1,13 +1,12 @@
 import 'package:e_commerce_app/common/app_style.dart';
 import 'package:e_commerce_app/common/widgets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../common/size_config.dart';
 
 class FormError extends StatelessWidget {
-  FormError({Key? key,  required this.errors}) : super(key: key);
+  const FormError({Key? key, required this.errors}) : super(key: key);
   final List<String> errors;
 
   @override
@@ -29,12 +28,15 @@ Widget formError({error}) {
     children: [
       SvgPicture.asset(
         'assets/images/fail-error-alert-notification-warning-svgrepo-com.svg',
-        color: Colors.cyan,
+        color: Color.fromARGB(255, 187, 88, 88),
         height: getResponsiveScreenHeight(3.5),
         width: getResponsiveScreenWidth(3.5),
       ),
-      buildWidthSpace(2),
-      Text(error),
+      buildWidthSpace(3),
+      Text(
+        error,
+        style: const TextStyle(fontWeight: FontWeight.w300, fontSize: 13),
+      ),
     ],
   );
 }

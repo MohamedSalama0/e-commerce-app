@@ -1,9 +1,10 @@
+// ignore_for_file: non_constant_identifier_names, unused_local_variable
+
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
+import 'package:e_commerce_app/common/app_style.dart';
+import 'package:e_commerce_app/common/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
-import '../../common/app_style.dart';
 import 'details_card_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,122 +34,40 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              height: 30,
-              width: 200,
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  hintText: 'Search Something',
-
+            Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                    left: getResponsiveScreenWidth(3), 
+                    top:  getResponsiveScreenHeight(3),
+                  ),
+                  height: getResponsiveScreenHeight(6),
+                  width: getResponsiveScreenWidth(65),
+                  decoration: BoxDecoration(
+                    color: kTextColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(
+                      18
+                    ),
+                  ),
+                  clipBehavior: Clip.hardEdge,
+                  child: const TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Search Products',
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: kPrimaryColor,
+                      ),
+                    ),
+                    style: TextStyle(
+                      color: Colors.purple,
+                    ),
+                  ),
                 ),
-                style: const TextStyle(
-                  color: Colors.purple,
-                ),
-              ),
+              ],
             ),
-            // Container(
-            //   width: double.infinity,
-            //   height:  120,
-            //   decoration: const BoxDecoration(
-            //     gradient: LinearGradient(
-            //       colors: [
-            //         Color(0xffBB44CA),
-            //         Color(0xff7726DA),
-            //       ],
-            //     ),
-            //     borderRadius: BorderRadius.only(
-            //         bottomLeft: Radius.circular(18),
-            //         bottomRight: Radius.circular(18)),
-            //   ),
-            //   child: Padding(
-            //     padding: const EdgeInsets.fromLTRB(10, 35, 12, 12),
-            //     child: Column(
-            //       crossAxisAlignment: CrossAxisAlignment.start,
-            //       children: [
-            //         Text('(Your cards)', style: kTitle2),
-            //         const SizedBox(height: 30),
-            //         Row(
-            //           children: const [
-            //             SizedBox(
-            //               // width: MediaQuery.of(context).size.width,
-            //               height: 120,
-            //               child: ListTile(
-            //                 leading: Icon(Icons.ac_unit_outlined),
-            //                 title: Text(
-            //                   'Anydhs',
-            //                   style: kBodyText2,
-            //                 ),
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               // width: MediaQuery.of(context).size.width,
-            //               height: 120,
-            //               child: ListTile(
-            //                 leading: Icon(Icons.ac_unit_outlined),
-            //                 title: Text(
-            //                   'Anydhs',
-            //                   style: kBodyText2,
-            //                 ),
-            //               ),
-            //             ),
-            //           ],
-            //         ),
-            //         const SizedBox(height: 30),
-            //         Row(
-            //           children: const [
-            //             SizedBox(
-            //               // width: MediaQuery.of(context).size.width,
-            //               height: 120,
-            //               child: ListTile(
-            //                 leading: Icon(Icons.ac_unit_outlined),
-            //                 title: Text(
-            //                   'Anydhs',
-            //                   style: kBodyText2,
-            //                 ),
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               // width: MediaQuery.of(context).size.width,
-            //               height: 120,
-            //               child: ListTile(
-            //                 leading: Icon(Icons.ac_unit_outlined),
-            //                 title: Text(
-            //                   'Anydhs',
-            //                   style: kBodyText2,
-            //                 ),
-            //               ),
-            //             ),
-            //           ],
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //   children: [
-            //     const Align(
-            //         alignment: Alignment.topLeft,
-            //         child: Padding(
-            //           padding: EdgeInsets.all(15.0),
-            //           child: Text(
-            //             'Choose your\ntype of card',
-            //             style: kTitle2,
-            //           ),
-            //         )),
-            //     Padding(
-            //       padding: const EdgeInsets.only(right: 12.0),
-            //       child: CircleAvatar(
-            //         backgroundColor: Colors.white,
-            //         child: IconButton(
-            //           color: kBlack,
-            //           onPressed: () {},
-            //           icon: const Icon(Icons.filter),
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
+
             Expanded(
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
